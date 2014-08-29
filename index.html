@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html ng-app="myModule">
+<head>
+    <meta charset="utf-8" />
+    <title>Global safaris</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+    <script src="js/holder.js"></script>
+    
+</head>
+<body>
+
+        <!-- Navigation - START -->
+        <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavController">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" ng-click = "isCollapsed = !isCollapsed">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <div id="navbar" class="collapse navbar-collapse" collapse="isCollapsed">
+                    <!--<ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home Page</a></li>
+                        <li><a href="#">Contacts</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Social</a></li>
+                    </ul>-->
+                    <script type="text/ng-template" id="myModalContent.html">
+                        <div class="modal-header">
+                            <h3 class="modal-title">Please sign in</h3>
+                        </div>
+                        <div class="modal-body">
+                            <input id="username" type="text" placeholder="username" class="form-control"><br>
+                            <input id="password" type="password" placeholder="password" class="form-control">
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" ng-click="ok()">OK</button>
+                        </div>
+                    </script>
+
+                    <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="signinModal('lg')">Sign in</button>
+                    
+                    <form class="navbar-form " role="search">
+                        
+                        <div class="form-group navbar-left">
+                            <input type="text" class="form-control" placeholder="Search..." size="40">
+                        </div>
+
+                        <div class="form-group form-group-sm navbar-right" id="currency">    
+                            Currency:                    
+                            <select class="form-control" >
+                                <option value="KES">KES</option>
+                                <option value="EURO">EURO</option>
+                                <option value="USD">USD</option>
+                            </select>
+                        </div>
+                        
+                    </form>
+                    
+                    <!--<alert type="danger">Woah there!</alert>-->
+                </div>
+
+            </div>
+            
+        </nav>
+        <!-- Navigation - END -->
+
+        
+        <!-- Main jumbotron for a primary marketing message or call to action -->
+        <!--<div class="jumbotron">
+          <div class="">
+          <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
+            <h1>Hello, world!</h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+          </div>
+        </div>-->
+
+
+
+    <div class="container-fluid">
+
+        <!--<div class="page-header">
+            <h1>Navigation <small>Bootstrap template, demonstrating navigation with centered content</small></h1>
+        </div>-->
+
+        <div id="video" class="row">
+            
+            <div class="text-center" id="headline">
+                <h1>Welcome</h1>
+                <h2>
+                    Find an wonderful travel destination<br>
+                    At an awesome price!
+
+                </h2>
+
+            </div>
+            <!--
+            <form role="form" class="col-md-4" id="form">
+                <div class="form-group">
+                    
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Destination?">
+                </div>
+                <div class="form-group form-inline">
+                    <div class="row">
+                       
+                    </div>
+                    <div class="form-group">
+                        
+                        <label for="fromDate">From</label >
+                        <div class="input-group">
+                        
+                            <div class="input-group-addon">@</div>
+
+                            <input type="date" class="form-control input-sm" id="fromDate" value="" placeholder="From" size="10">
+                        </div>
+                    </div>
+                    
+                        
+                    <label for="toDate">To</label>
+                    <input type="date" class="form-control" id="toDate" placeholder="To">
+
+                    <div class="input-group">
+                      <div class="input-group-addon">@</div>
+                      <input class="form-control" type="email" placeholder="Enter email">
+                    </div>
+                </div>
+                
+            </form>
+            -->
+        </div>
+
+        
+               
+
+        <div class="row" ng-controller="TabMenuController">
+            <tabset justified="true">
+                <tab heading="Everything"></tab>
+                <tab heading="Honeymoon"></tab>
+                <tab heading="Retreat"></tab>
+                <tab heading="Beach"></tab>
+            </tabset>
+        </div>
+        
+        <div class="">
+        
+            <div class="outer" ng-controller="CardsController">
+                <!--
+                <div class="thumbnail">
+                    
+                      <img data-src="holder.js/100%x180" alt="Blahahah" />
+                      <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae augue. 
+                                    Vivamus ipsum eros, sodales sed enim ac, malesuada iaculis mi. 
+                                    Morbi ut orci sit amet tellus posuere convallis. 
+                                    Cras rhoncus tincidunt ultrices.</p>
+                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+                      </div>
+                    
+                </div>
+                
+                -->
+                <script type="text/ng-template" id="myModalContent.html">
+                    <carousel>
+                        <slide>
+                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                            <p> $100 </p>
+                        </slide>
+                        <slide>
+                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                            <p> $200 </p>
+                        </slide>
+                        <slide>
+                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                            <p> $300 </p>
+                        </slide>
+                        <slide>
+                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                            <p> $400 </p>
+                        </slide>
+                        <slide>
+                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                            <p> $400 </p>
+                        </slide>
+                    </carousel>
+                </script>
+
+                <button class="card thumbnail" ng-click="cardModal('lg')">
+                                <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
+                                <div class="card-content text-left">
+                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                                    <p> $400 </p>
+                                </div>
+                                
+                </button>
+
+                <button class="card thumbnail" ng-click="cardModal('lg')">
+                                <img data-src="holder.js/100%x100/lava" alt="Blahahah" />
+                                <div class="card-content text-left">
+                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                                    <p> $400 </p>
+                                </div>
+                                
+                </button>
+
+                <button class="card thumbnail" ng-click="cardModal('lg')">
+                                <img data-src="holder.js/110%x180/sky" alt="Blahahah" />
+                                <div class="card-content text-left">
+                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                                    <p> $400 </p>
+                                </div>
+                                
+                </button>
+                <button class="card thumbnail" ng-click="cardModal('lg')">
+                                <img data-src="holder.js/100%x280/vine" alt="Blahahah" />
+                                <div class="card-content text-left">
+                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                                    <p> $400 </p>
+                                </div>
+                                
+                </button>
+                <button class="card thumbnail" ng-click="cardModal('lg')">
+                                <img data-src="holder.js/100%x380/vine" alt="Blahahah" />
+                                <div class="card-content text-left">
+                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                                    <p> $400 </p>
+                                </div>
+                                
+                </button>
+                <button class="card thumbnail" ng-click="cardModal('lg')">
+                                <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
+                                <div class="card-content text-left">
+                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                                    <p> $400 </p>
+                                </div>
+                                
+                </button>
+                <button class="card thumbnail" ng-click="cardModal('lg')">
+                                <img data-src="holder.js/100%x180/vine" alt="Blahahah" />
+                                <div class="card-content text-left">
+                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                                    <p> $400 </p>
+                                </div>
+                                
+                </button>
+                <button class="card thumbnail" ng-click="cardModal('lg')">
+                                <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
+                                <div class="card-content text-left">
+                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
+                                    <p> $400 </p>
+                                </div>
+                                
+                </button>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    -->
+    
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script src="js/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+    
+    <script type="text/javascript">
+        var container = document.querySelector('.outer');
+        var msnry = new Masonry(container, {
+            columnWidth: '.card',
+            itemSelector: '.card'
+            
+        });
+        imagesLoaded(container, function(){
+            msnry.layout();
+        });
+        
+    </script>
+</body>
+</html>
