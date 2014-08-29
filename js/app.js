@@ -9,7 +9,7 @@ app.controller("CardsController", ["$scope", "$modal", function($scope, $modal){
 	$scope.cardModal = function(size){
 
 		var modalInstance = $modal.open({
-			templateUrl: 'myModalContent.html'
+			templateUrl: 'cardModals.html'
 		});
 	};
 	
