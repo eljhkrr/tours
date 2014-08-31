@@ -15,7 +15,7 @@
 <body>
 
         <!-- Navigation - START -->
-        <nav class="navbar navbar-default navbar-fixed-top" ng-controller="NavController">
+        <nav class="navbar navbar-default navbar-fixed-top" scroll ng-init="showNavbar = false" ng-show="showNavbar" ng-controller="NavController">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" ng-click = "isCollapsed = !isCollapsed">
@@ -36,20 +36,46 @@
                         <li><a href="#">Social</a></li>
                     </ul>-->
                     <script type="text/ng-template" id="myModalContent.html">
-                        <div class="modal-header">
-                            <h3 class="modal-title">Please sign in</h3>
+                        <!--<div class="modal-header">
+                            <h3 class="">Please sign in</h3>
+                        </div>-->
+                        <div class="row pull-right ">
+                                
                         </div>
-                        <div class="modal-body">
-                            <input id="username" type="text" placeholder="username" class="form-control"><br>
-                            <input id="password" type="password" placeholder="password" class="form-control">
+                        <div class="modal-body text-center row">
+                        
+                            <div class="col-md-4">
+                                <form role="form" class="form-horizontal" id="loginform">
+                                    <h2>Login</h2><hr>
+                                    <input id="username" type="text" placeholder="username" class="form-control"><br>
+                                    <input id="password" type="password" placeholder="password" class="form-control"><br>
+                                    <div class="row">
+                                        <button class="btn btn-primary col-xs-12" ng-click="ok()">Sign in</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-8">
+                                <form role="form" class="form-horizontal" id="regform">
+                                    <h2>Register</h2><hr>
+                                    <input id="username" type="text" placeholder="Your name" class="form-control"><br>
+                                    <input id="password" type="email" placeholder="Your email" class="form-control"><br>
+                                    <input id="password" type="password" placeholder="password" class="form-control"><br>
+                                    <input id="password" type="password" placeholder="password again" class="form-control"><br>
+                                    <div class="row">
+                                        <button class="btn btn-primary col-xs-12" ng-click="ok()">Register</button>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            
                             
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" ng-click="ok()">OK</button>
-                        </div>
+                        <!--<div class="modal-footer">
+                            <button class="btn btn-danger col-xs-12" ng-click="cancel()">Cancel</button>
+                        </div>-->
                     </script>
 
-                    <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="signinModal('lg')">Sign in</button>
+                    <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="signinModal('lg')">Login / Register</button>
                     
                     <form class="navbar-form " role="search">
                         
@@ -96,7 +122,7 @@
         </div>-->
 
         <div id="video" class="row">
-            
+            video top
             <div class="text-center" id="headline">
                 <h1>Welcome</h1>
                 <h2>
@@ -146,7 +172,7 @@
 
         <div class="row" ng-controller="TabMenuController">
             <tabset justified="true">
-                <tab heading="Everything"></tab>
+                <tab heading="All Offers"></tab>
                 <tab heading="Honeymoon"></tab>
                 <tab heading="Retreat"></tab>
                 <tab heading="Beach"></tab>
@@ -175,27 +201,29 @@
                 <script type="text/ng-template" id="cardModals.html">
                     <carousel>
                         <slide>
-                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <div class="slide-text">
                             <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
                             <p> $100 </p>
+                            </div>
                         </slide>
                         <slide>
-                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
                             <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
                             <p> $200 </p>
                         </slide>
                         <slide>
-                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
                             <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
                             <p> $300 </p>
                         </slide>
                         <slide>
-                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
                             <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
                             <p> $400 </p>
                         </slide>
                         <slide>
-                            <img ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
+                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
                             <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
                             <p> $400 </p>
                         </slide>
@@ -204,14 +232,14 @@
 
                 <button class="card thumbnail" ng-click="cardModal('lg')">
                                 <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
-                                <div class="card-content text-left">
+                                <div class="card-content">
                                     <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
                                     <p> $400 </p>
                                 </div>
                                 
                 </button>
 
-                <button class="card thumbnail" ng-click="cardModal('lg')">
+                <button class="card thick thumbnail" ng-click="cardModal('lg')">
                                 <img data-src="holder.js/100%x100/lava" alt="Blahahah" />
                                 <div class="card-content text-left">
                                     <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
@@ -272,6 +300,12 @@
             </div>
         </div>
 
+        <footer class="row">
+            <div class="col-md-4">
+                
+            </div>
+            
+        </footer>
     </div>
 
     <!--
