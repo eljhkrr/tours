@@ -1,355 +1,1654 @@
 <!DOCTYPE html>
-<html ng-app="myModule">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <title>Global safaris</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/app.css" />
-
-    <script src="js/holder.js"></script>
+ 
+    <meta charset="utf-8">  
     
-</head>
-<body>
+    <title>Global Safaris</title> <!--insert your title here-->  
+    <meta name="description" content="Love Travel HTML5 version"> <!--insert your description here-->  
+    <meta name="author" content="nicDark"> <!--insert your name here-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--meta responsive-->
+    
+  	<!--START CSS--> 
+    <link rel="stylesheet" href="css/style.css"> <!--main-->
+    <link rel="stylesheet" href="css/grid.css"> <!--grid-->
+    <link rel="stylesheet" href="css/responsive.css"> <!--responsive-->
+    <link rel="stylesheet" href="rs-plugin/css/settings.css" media="screen" /> <!--rev slider-->
+    <link rel="stylesheet" href="showbizpro/css/settings.css" media="screen" /> <!--showbiz-->
+    <!--<link rel="stylesheet" href="css/animate.css"> --><!--animate-->
+    <link rel="stylesheet" href="css/superfish.css" media="screen"> <!--menu-->
+    <link rel="stylesheet" href="css/fancybox/jquery.fancybox.css"> <!--main fancybox-->
+    <link rel="stylesheet" href="css/fancybox/jquery.fancybox-thumbs.css"> <!--fancybox thumbs-->
+    <link rel="stylesheet" href="css/isotope.css"> <!--isotope-->
+    <link rel="stylesheet" href="css/flexslider.css"> <!--flexslider-->
+    <!--END CSS-->
+    
+    <!--google fonts
+    <link href='http://fonts.googleapis.com/css?family=Signika:400,300,600,700' rel='stylesheet' type='text/css'>-->
+    
+    <!--[if lt IE 9]>  
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+    <![endif]-->  
+    
+    <!--FAVICONS-->
+    <link rel="shortcut icon" href="img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+    <!--END FAVICONS-->
 
-        <div id="raw-nav">
-            <ul>
-                <span class="pull-left">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">How it works</a></li>
-                </span>
-                <span class="pull-right">
-                    <li><a href="#">Create your offer</a></li>
-                    <li><a href="#">Help</a></li>
-                    <li><a class="btn btn-default" href="#"><i class="fa fa-life-ring"></i> Support</a></li> 
-                </span>
-                
-            </ul>
-        </div>
-        
-        <!-- Navigation - START -->
-        <nav class="navbar navbar-default navbar-fixed-top" scroll ng-init="showNavbar = false" ng-show="showNavbar" ng-controller="NavController">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" ng-click = "isCollapsed = !isCollapsed">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Brand</a>
-                </div>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    
+</head>  
+<body id="startpage" ng-app="myApp">
 
-                <div id="navbar" class="collapse navbar-collapse" collapse="isCollapsed">
-                    <!--<ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home Page</a></li>
-                        <li><a href="#">Contacts</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Social</a></li>
-                    </ul>-->
-                    <script type="text/ng-template" id="myModalContent.html">
-                        <!--<div class="modal-header">
-                            <h3 class="">Please sign in</h3>
-                        </div>-->
-                        <div class="row pull-right ">
-                                
-                        </div>
-                        <div class="modal-body text-center row">
-                        
-                            <div class="col-md-4">
-                                <form role="form" class="form-horizontal" id="loginform">
-                                    <h2>Login</h2><hr>
-                                    <input id="username" type="text" placeholder="username" class="form-control"><br>
-                                    <input id="password" type="password" placeholder="password" class="form-control"><br>
-                                    <div class="row">
-                                        <button class="btn btn-primary col-xs-12" ng-click="ok()">Sign in</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-md-8">
-                                <form role="form" class="form-horizontal" id="regform">
-                                    <h2>Register</h2><hr>
-                                    <input id="username" type="text" placeholder="Your name" class="form-control"><br>
-                                    <input id="password" type="email" placeholder="Your email" class="form-control"><br>
-                                    <input id="password" type="password" placeholder="password" class="form-control"><br>
-                                    <input id="password" type="password" placeholder="password again" class="form-control"><br>
-                                    <div class="row">
-                                        <button class="btn btn-primary col-xs-12" ng-click="ok()">Register</button>
-                                    </div>
-                                </form>
-                            </div>
-                            
-                            
-                            
-                        </div>
-                        <!--<div class="modal-footer">
-                            <button class="btn btn-danger col-xs-12" ng-click="cancel()">Cancel</button>
-                        </div>-->
-                    </script>
-
-                    <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="signinModal('lg')">Login / Register</button>
-                    
-                    <form class="navbar-form " role="search">
-                        
-                        <div class="form-group navbar-left">
-                            <input type="text" class="form-control" placeholder="Search..." size="40">
-                        </div>
-
-                        <div class="form-group form-group-sm navbar-right" id="currency">    
-                            Currency:                    
-                            <select class="form-control" >
-                                <option value="KES">KES</option>
-                                <option value="EURO">EURO</option>
-                                <option value="USD">USD</option>
-                            </select>
-                        </div>
-                        
-                    </form>
-                    
-                    <!--<alert type="danger">Woah there!</alert>-->
-                </div>
-
-            </div>
-            
-        </nav>
-        <!-- Navigation - END -->
-
-        
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-        <!--<div class="jumbotron">
-          <div class="">
-          <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
-            <h1>Hello, world!</h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
-          </div>
-        </div>-->
-
-
-
-    <div class="container-fluid">
-
-        <!--<div class="page-header">
-            <h1>Navigation <small>Bootstrap template, demonstrating navigation with centered content</small></h1>
-        </div>-->
-
-        <div id="video" class="row">
-            <p>
-            <video loop="loop" preload="auto" width="1351px">
-                <source src="http://a0.muscache.com/airbnb/static/Paris-P1-1.mp4" type="video/mp4">
-                <source src="http://a0.muscache.com/airbnb/static/Paris-P1-0.webm" type="video/webm">
-            </video>
-            </p>
-            <div class="text-center" id="headline">
-                <h1><span class="underline">Hello world</span></h1>
-                <h2><span class="line-2">
-                    wonderful places, wonderful pricing
-                    </span>
-
-                </h2>
-
-            </div>
-            
-        </div>
-
-        
-               
-
-        <div class="row" ng-controller="TabMenuController">
-            <tabset justified="true">
-                <tab heading="All Offers"></tab>
-                <tab heading="Honeymoon"></tab>
-                <tab heading="Retreat"></tab>
-                <tab heading="Beach"></tab>
-            </tabset>
-        </div>
-        
-        <div class="">
-        
-            <div class="outer" ng-controller="CardsController">
-                <!--
-                <div class="thumbnail">
-                    
-                      <img data-src="holder.js/100%x180" alt="Blahahah" />
-                      <div class="caption">
-                        <h3>Thumbnail label</h3>
-                        <p>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae augue. 
-                                    Vivamus ipsum eros, sodales sed enim ac, malesuada iaculis mi. 
-                                    Morbi ut orci sit amet tellus posuere convallis. 
-                                    Cras rhoncus tincidunt ultrices.</p>
-                        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-                      </div>
-                    
-                </div>
-                
-                -->
-                <script type="text/ng-template" id="cardModals.html">
-                    <carousel>
-                        <slide>
-                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
-                            <div class="slide-text">
-                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                            <p> $100 </p>
-                            </div>
-                        </slide>
-                        <slide>
-                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
-                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                            <p> $200 </p>
-                        </slide>
-                        <slide>
-                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
-                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                            <p> $300 </p>
-                        </slide>
-                        <slide>
-                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
-                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                            <p> $400 </p>
-                        </slide>
-                        <slide>
-                            <img height="800" width="800" ng-src="http://www.unsplash.it/800/500/?random" alt="Blahahah" />
-                            <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                            <p> $400 </p>
-                        </slide>
-                    </carousel>
-                </script>
-
-                <button class="card thumbnail" ng-click="cardModal('lg')">
-                                <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
-                                <div class="card-content">
-                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                                    <p> $400 </p>
-                                </div>
-                                
-                </button>
-
-                <button class="card thick thumbnail" ng-click="cardModal('lg')">
-                                <img data-src="holder.js/100%x100/lava" alt="Blahahah" />
-                                <div class="card-content text-left">
-                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                                    <p> $400 </p>
-                                </div>
-                                
-                </button>
-
-                <button class="card thumbnail" ng-click="cardModal('lg')">
-                                <img data-src="holder.js/110%x180/sky" alt="Blahahah" />
-                                <div class="card-content text-left">
-                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                                    <p> $400 </p>
-                                </div>
-                                
-                </button>
-                <button class="card thumbnail" ng-click="cardModal('lg')">
-                                <img data-src="holder.js/100%x280/vine" alt="Blahahah" />
-                                <div class="card-content text-left">
-                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                                    <p> $400 </p>
-                                </div>
-                                
-                </button>
-                <button class="card thumbnail" ng-click="cardModal('lg')">
-                                <img data-src="holder.js/100%x380/vine" alt="Blahahah" />
-                                <div class="card-content text-left">
-                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                                    <p> $400 </p>
-                                </div>
-                                
-                </button>
-                <button class="card thumbnail" ng-click="cardModal('lg')">
-                                <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
-                                <div class="card-content text-left">
-                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                                    <p> $400 </p>
-                                </div>
-                                
-                </button>
-                <button class="card thumbnail" ng-click="cardModal('lg')">
-                                <img data-src="holder.js/100%x180/vine" alt="Blahahah" />
-                                <div class="card-content text-left">
-                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                                    <p> $400 </p>
-                                </div>
-                                
-                </button>
-                <button class="card thumbnail" ng-click="cardModal('lg')">
-                                <img data-src="holder.js/100%x180/sky" alt="Blahahah" />
-                                <div class="card-content text-left">
-                                    <h3>Proin nec neque eget nulla scelerisque rhoncus sit amet vitae</h3>
-                                    <p> $400 </p>
-                                </div>
-                                
-                </button>
-
-            </div>
-        </div>
-
-        <footer class="row">
-            <div class="col-md-4">
-                <h3>Who we are</h3>
-                <ul>
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h3>What we like</h3>
-                <ul>
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h3>Why we like</h3>
-                <ul>
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
-                  <li>Coffee</li>
-                  <li>Tea</li>
-                  <li>Milk</li>
-                </ul>
-            </div>
-            
-        </footer>
+<!--start left menu open-->
+<div class="leftmenuopen leftmenuopendark"> <!--leftmenuopenlight or leftmenuopendark-->
+    <p class="titlecloseleftmenu">QUICK DESTINATIONS</p>
+    <ul>
+        <li class="evidenceleftmenu"><p class="red">KENYA<span class="bulletevidenceleftmenu"></span></p></li>
+        <li><p><a href="#">Mombasa</a></p></li>
+        <li><p><a href="#">Kilifi</a></p></li>
+        <li><p><a href="#">Lamu</a></p></li>
+        <li><p><a class="leftmenumore" href="#">See more</a></p></li>
+        <li class="evidenceleftmenu"><p class="yellow">ZANZIBAR<span class="bulletevidenceleftmenu"></span></p></li>
+        <li><p><a href="#">Paje Beach</a></p></li>
+        <li><p><a href="#">Butterfly Center</a></p></li>
+        <li><p><a href="#">Mnarani Marine Turtle Conservation Park</a></p></li>
+        <li><p><a class="leftmenumore" href="#">See more</a></p></li>
+		<li class="evidenceleftmenu"><p class="green">EUROPE<span class="bulletevidenceleftmenu"></span></p></li>
+        <li><p><a href="#">Rome</a></p></li>
+        <li><p><a href="#">Paris</a></p></li>
+        <li><p><a href="#">London</a></p></li>
+        <li><p><a class="leftmenumore" href="#">See more</a></p></li>
+    </ul>
+</div>
+<!--end left menu open-->
+<!--start header-->
+<header id="navigationmenu" class="fade-down animate1 navigationmenulight">
+	
+    <!--start left menu close-->
+    <div class="leftmenuclose">
+    	<img alt="" src="img/header/leftmenuclose.png">
     </div>
+    <!--end left menu close-->
+    
+    <!--start container-->
+    <div class="container">
+    
+        <!--start navigation-->
+    	<div class="grid_12 gridnavigation">
+        
+        	<!--<img class="logo fade-up animate4" alt="" src="img/logo.png">-->
+            
+        	<!--start navigation-->
+            <ul class="sf-menu" id="nav">
+
+                <li class="blue">
+                    <span class="menufilter"></span>
+                    <!--search form-->
+                    <form role="search" method="get" id="searchform" class="searchform logo" action="#">
+                        <div>
+                            
+                            <input type="text" value="" name="s" id="s" placeholder="Search..." size="40"/>
+                            
+                        </div>
+                    </form>
+                    <!--end search form-->
+                </li>
+                
+                <li class="current yellow">
+                	<span class="menufilter"></span>
+                    <a href="#"><strong>HELP</strong></a>
+                    
+                    <ul>
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">Create your offer</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                    
+                </li>
+               
+            </ul>   
+            <!--end navigationmenu-->	     
+        
+        </div>
+        <!--end navigation-->
+
+    </div>
+    <!--end container-->
 
     <!--
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <div class="rightsearchclose">
+    	<img alt="" src="img/header/rightsearch.png">
+    </div>   
     -->
+
+</header>
+<!--end header-->
+
+
+
+
+<!--start slide-->
+<section class="sectionhome fade-down">
+	
+	<!--start rev slider-->
+    <div class="tp-banner-container">
+		<div class="tp-banner tp-banner-full-width" >
+			<ul>
+                
+                <!-- SLIDE  -->
+				<li data-transition="fade" data-slotamount="7" data-masterspeed="1000" >
+					<img src="img/rev-slider/1/slide1.jpg" style='background-color:#b2c4cc' alt=""  data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat">
+                
+                    
+                </li>
+                <!-- SLIDE  -->
+				
+				<!-- SLIDE  -->
+				<li data-transition="fade" data-slotamount="7" data-masterspeed="1000" >
+					<img src="img/rev-slider/2/slide2.jpg" style='background-color:#b2c4cc' alt=""  data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat">
+				</li>
+                <!-- SLIDE  -->
+                
+                <!-- SLIDE  -->
+				<li data-transition="fade" data-slotamount="7" data-masterspeed="1000" >
+					<img src="img/rev-slider/3/slide3.jpg" style='background-color:#b2c4cc' alt=""  data-bgfit="cover" data-bgposition="center top" data-bgrepeat="no-repeat">
+				</li>
+                <!-- SLIDE  -->
+		
+			</ul>
+			<div class="tp-bannertimer"></div>
+		</div>
+	</div>
+    <!--end rev slider-->
+
     
-    <script type="text/javascript" src="js/angular.min.js"></script>
-    <script type="text/javascript" src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script src="js/masonry.pkgd.min.js"></script>
-    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
+</section>
+<!--end slide--><!--start services-->
+<section id="homeservices" class="sectionhome fade-up">
+
+	<!--start container-->
+    <div class="container clearfix">
     
-    <script type="text/javascript">
-        var container = document.querySelector('.outer');
-        var msnry = new Masonry(container, {
-            columnWidth: '.card',
-            itemSelector: '.card'
+        <!--start 1 service-->
+        <div class="grid_3 homeservice">
             
-        });
-        imagesLoaded(container, function(){
-            msnry.layout();
-        });
+            <div class="imgserviceopen">
+            	<img alt="" src="img/service/service1open.jpg" />
+            </div>
+            
+            <div class="imgservice">
+            	<!--start percentagehome-->
+                <div class="percentagehome" data-percent="90">
+                    <img alt="" src="img/service/service1.png" />
+                </div>
+            	<!--end percentagehome-->
+            </div>
+            
+            <h2><a href="#">EVERYTHING</a></h2>
+            <p>Showing all offers</p>   
+        </div>
+        <!--end 1 service-->
         
-    </script>
-</body>
+        <!--start 2 service-->
+        <div class="grid_3 homeservice">
+            
+            <div class="imgserviceopen">
+            	<img alt="" src="img/service/service2open.jpg" />
+            </div>
+            
+            <div class="imgservice">
+            
+            	<!--start percentagehome-->
+                <div class="percentagehome" data-percent="80">
+                    <img alt="" src="img/service/service2.png" />
+                </div>
+            	<!--end percentagehome-->
+                
+            </div>
+            
+            <h2><a href="#">RETREAT</a></h2>
+            <p>Click here to see retreat offers</p>    
+        </div>
+        <!--end 2 service-->
+        
+        <!--start 3 service-->
+        <div class="grid_3 homeservice">
+            
+            <div class="imgserviceopen">
+            	<img alt="" src="img/service/service3open.jpg" />
+            </div>
+            
+            <div class="imgservice">
+            
+            	<!--start percentagehome-->
+                <div class="percentagehome" data-percent="70">
+                    <img alt="" src="img/service/service3.png" />
+                </div>
+            	<!--end percentagehome-->
+                
+            </div>
+            
+            <h2><a href="#">HONEYMOON</a></h2>
+            <p>Click here to see honeymoon offers</p>   
+        </div>
+        <!--end 3 service-->
+
+        <!--start 3 service-->
+        <div class="grid_3 homeservice">
+            
+            <div class="imgserviceopen">
+                <img alt="" src="img/service/service3open.jpg" />
+            </div>
+            
+            <div class="imgservice">
+            
+                <!--start percentagehome-->
+                <div class="percentagehome" data-percent="70">
+                    <img alt="" src="img/service/service3.png" />
+                </div>
+                <!--end percentagehome-->
+                
+            </div>
+            
+            <h2><a href="#">BEACH</a></h2>
+            <p>Click here to see beach offers</p>   
+        </div>
+        <!--end 3 service-->
+    
+    </div>
+    <!--end container--> 
+    
+</section>
+<!--end services--><div class="divider"><span></span></div>
+
+<!--start hometour-->
+<section id="hometours" ng-controller="HolidayItemsController">
+
+	<!--start container-->
+    <div class="container clearfix">
+    
+        <div class="grid_12">
+        	<div class="titlesection">
+            	<h1>AWESOME DESTINATIONS</h1>
+            	<h4>TRAVEL IS THE ONLY THING YOU BUY, THAT MAKES YOU RICHER</h4> 
+            </div>  
+        </div>
+        
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-0 blue fade-down animate1">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">MAASAI MARA - KENYA</p>
+                        <img alt="" class="imghometour" src="img/tours/tour1.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                SEPT 3 - SEPT 17
+                            </p>
+                            <div class="dayhometour">
+                                <p>14</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>	
+                    </div>	
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-1"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-2"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-3"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-1">
+                                <img alt="" src="img/tours/weathertour-blue.png" /><p><strong>RAIN 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-2">
+                                <img alt="" src="img/tours/moneytour-blue.png" /><p><strong>2.000 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-3">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-1" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-1" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-1" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-1" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-1" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-1" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+								<span>
+									<img alt="" src="img/tours/contacticon.png">
+									CONTACT
+								</span>
+							</a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+								<span>
+									<img alt="" src="img/tours/moreicon.png">
+									MORE
+								</span>
+							</a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->	
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+        
+        
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 green fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">PAJE BEACH - ZANZIBAR</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                DEC 12 - DEC 17
+                            </p>
+                            <div class="dayhometour">
+                                <p>5</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>	
+                    </div>	
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+								<span>
+									<img alt="" src="img/tours/contacticon.png">
+									CONTACT
+								</span>
+							</a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+								<span>
+									<img alt="" src="img/tours/moreicon.png">
+									MORE
+								</span>
+							</a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->	
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 green fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">OLE SERENI - KENYA</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                JAN 23 - FEB 17
+                            </p>
+                            <div class="dayhometour">
+                                <p>25</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>  
+                    </div>  
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/contacticon.png">
+                                    CONTACT
+                                </span>
+                            </a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/moreicon.png">
+                                    MORE
+                                </span>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->  
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 blue fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">YUCATAN - MEXICO</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                NOV 21 - NOV 23
+                            </p>
+                            <div class="dayhometour">
+                                <p>2</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>  
+                    </div>  
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/contacticon.png">
+                                    CONTACT
+                                </span>
+                            </a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/moreicon.png">
+                                    MORE
+                                </span>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->  
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 green fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">PUNE INDIA</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                OCT 15 - OCT 18
+                            </p>
+                            <div class="dayhometour">
+                                <p>3</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>  
+                    </div>  
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/contacticon.png">
+                                    CONTACT
+                                </span>
+                            </a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/moreicon.png">
+                                    MORE
+                                </span>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->  
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 blue fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">YUCATAN - MEXICO</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                SEPT 3 - SEPT 17
+                            </p>
+                            <div class="dayhometour">
+                                <p>14</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>  
+                    </div>  
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/contacticon.png">
+                                    CONTACT
+                                </span>
+                            </a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/moreicon.png">
+                                    MORE
+                                </span>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->  
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 green fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">LAS VEGAS - MEXICO</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                MARCH 10 - MARCH 17
+                            </p>
+                            <div class="dayhometour">
+                                <p>15</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>  
+                    </div>  
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/contacticon.png">
+                                    CONTACT
+                                </span>
+                            </a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/moreicon.png">
+                                    MORE
+                                </span>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->  
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 green fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">YUCATAN - MEXICO</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                APR 12 - APR 25
+                            </p>
+                            <div class="dayhometour">
+                                <p>13</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>  
+                    </div>  
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/contacticon.png">
+                                    CONTACT
+                                </span>
+                            </a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/moreicon.png">
+                                    MORE
+                                </span>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->  
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 green fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">YUCATAN - MEXICO</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                JANUARY - 3 to 17
+                            </p>
+                            <div class="dayhometour">
+                                <p>15</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>  
+                    </div>  
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/contacticon.png">
+                                    CONTACT
+                                </span>
+                            </a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/moreicon.png">
+                                    MORE
+                                </span>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->  
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+        <!--start grid-->
+        <div class="grid_6">
+        
+            <!--START HOME TOUR-->
+            <div class="hometour hometour-1 green fade-down animate2">
+                
+                <!--start tophometour-->
+                <div class="tophometour">
+                    <div class="titleimghometour">
+                        <p class="titlehometour">YUCATAN - MEXICO</p>
+                        <img alt="" class="imghometour" src="img/tours/tour2.jpg">
+                    </div>
+                    <div class="datedescriptionhometour">
+                        <div class="datedayhometour">
+                            <p class="datehometour">
+                                JANUARY - 3 to 17
+                            </p>
+                            <div class="dayhometour">
+                                <p>15</p>
+                                <span>DAYS</span>
+                            </div>
+                        </div>
+                        <div class="descriptionhometour">
+                            <p><strong class="titledescriptionhometour">Title description</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus ultrices purus, volutpat malesuada sapien sollicitudin vitae.</p>
+                        </div>  
+                    </div>  
+                </div>
+                <!--end tophometour-->
+                
+                <!--start bottomhometour-->
+                <div class="bottomhometour">
+                    
+                    <!--start tabs-->
+                    <div class="tabshometour">
+                    
+                        <div class="hometabs"><ul><li><a title="Weather" href="#tabs-4"><img class="iconhometabsdefault" alt="" src="img/tours/weather.png" /><img class="iconhometabsactive" alt="" src="img/tours/weatheractive.png" /></a></li><li><a title="Price" href="#tabs-5"><img class="iconhometabsdefault" alt="" src="img/tours/money.png" /><img class="iconhometabsactive" alt="" src="img/tours/moneyactive.png" /></a></li><li><a title="Gallery" href="#tabs-6"><img class="iconhometabsdefault" alt="" src="img/tours/gallery.png" /><img class="iconhometabsactive" alt="" src="img/tours/galleryactive.png" /></a></li></ul>
+                            <div class="contenthometab weatherhometab" id="tabs-4">
+                                <img alt="" src="img/tours/weathertour-green.png" /><p><strong>CLOUDY 35 C°</strong></p>
+                            </div>
+                            <div class="contenthometab moneyhometab" id="tabs-5">
+                                <img alt="" src="img/tours/moneytour-green.png" /><p><strong>2.500 $</strong></p>
+                            </div>
+                            <div class="contenthometab galleryhometab" id="tabs-6">
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery1.jpg"><img src="img/tours/gallery1.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery2.jpg"><img src="img/tours/gallery2.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery3.jpg"><img src="img/tours/gallery3.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery4.jpg"><img src="img/tours/gallery4.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery5.jpg"><img src="img/tours/gallery5.jpg" alt="" /></a>
+                                <a class="fancybox-thumbs" data-fancybox-group="gallery-2" href="img/tours/gallery6.jpg"><img src="img/tours/gallery6.jpg" alt="" /></a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <!--end tabs-->
+                    
+                    <!--start listhometour-->
+                    <div class="listhometour">
+                        <ul>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                            <li><p>Lorem ipsum dolor sit<span class="bulletlisthometour"></span></p></li>
+                        </ul>
+                    </div>
+                    <!--end listhometour-->
+                    
+                    <!--start footer hometour-->
+    
+                    <div class="footerhometour">
+                        
+                        <div class="contacthometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/contacticon.png">
+                                    CONTACT
+                                </span>
+                            </a>
+                        </div>
+                       
+                        <div class="morehometour">
+                            <a href="#">
+                                <span>
+                                    <img alt="" src="img/tours/moreicon.png">
+                                    MORE
+                                </span>
+                            </a>
+                        </div>
+    
+                    </div>
+                    <!--end footer hometour-->  
+                   
+                </div>
+                <!--end bottomhometour-->
+                
+            </div>
+            <!--END HOME TOUR-->
+        
+        </div>
+        <!--end grid-->
+
+    
+    </div>
+    <!--end container--> 
+    
+</section>
+<!--end hometour--><div class="divider"><span></span></div>
+<!--start homeclients-->
+<section class="sectionhome">
+
+	<!--start container-->
+    <div class="container clearfix">
+            
+        <div class="grid_12">
+            <div class="titlesection">
+                <h1>TOUR OPERATORS</h1>
+                <h4>LOREM IPSUM DOLOR SIT AMET CONSECTEUR ADIP</h4> 
+            </div>  
+        </div>
+       
+        <div class="grid_3">
+        	<div class="imgclient fade-left animate1">
+                <img alt="" src="img/clients/client1.png">    
+            </div>
+        </div>
+        
+       	<div class="grid_3">
+            <div class="imgclient fade-left animate2">
+                <img alt="" src="img/clients/client2.png">     
+            </div>
+        </div>
+        
+        <div class="grid_3">
+            <div class="imgclient fade-left animate3">
+                <img alt="" src="img/clients/client3.png">    
+            </div>
+        </div>
+        
+        <div class="grid_3">
+            <div class="imgclient fade-left animate4">
+                <img alt="" src="img/clients/client4.png">        
+            </div>
+        </div>
+    
+    </div>
+    <!--end container--> 
+    
+</section>
+<!--end homeclients--><div class="divider"><span></span></div>
+    <!--start footer-->
+    <footer id="footer">
+        
+        <!--start container-->
+        <div class="container clearfix">
+        
+            <div class="grid_4 gridfooter">
+                <h3>LOVE TRAVEL</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque arcu lorem, mattis quis convallis ac</p> 
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque arcu lorem, mattis quis convallis ac</p>   
+            </div>
+    
+            <div class="grid_4 gridfooter">
+                <h3>CONTACTS</h3>
+                <p>Address: Broadway Road 234 - 35127<br />Phone: +001 3072341187<br />Mail: info@lovetravel.com</p>
+                <p class="socialfooter"><a href="#"><img alt="" src="img/footer/facebook.jpg" /></a><a href="#"><img alt="" src="img/footer/dribble.jpg" /></a><a href="#"><img alt="" src="img/footer/twitter.jpg" /></a><a href="#"><img alt="" src="img/footer/instagram.jpg" /></a><a href="#"><img alt="" src="img/footer/google.jpg" /></a></p>  
+            </div>
+            
+            <!--
+            <div class="grid_3 gridfooter">
+                <h3>TWEET</h3>
+                
+				<div id="tweets"></div>
+
+            </div>
+            -->
+
+            
+            <div class="grid_4 gridfooter">
+                <h3>NEWSLETTER</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque arcu lorem, mattis quis convallis ac</p> 
+                
+                <!--start form-->
+                <form class="newsletterfooter">
+                	<input type="text" />
+                    <input type="submit" />
+                </form>
+                <!--end form-->
+                  
+            </div>
+        
+        </div>
+        <!--end container--> 
+        
+    </footer>
+    <!--end footer-->
+    
+    <!--start copyright-->
+    <section id="copyright">
+        
+        <!--start container-->
+        <div class="container">
+        
+            <div class="grid_12">
+                <p>&copy; Copyright 2014 &middot; All Rights Reserved</p>   
+            </div>
+    
+        </div>
+        <!--end container-->
+        
+        <div class="backtotop">
+        	<a href="#startpage"><img alt="" src="img/footer/arrowbacktotop.png" /></a>
+        </div> 
+        
+    </section>
+    <!--end copyright-->
+	<!--Start js-->    
+    <script src="js/jquery.min.js"></script> <!--Jquery-->
+    <script src="js/jquery-ui.js"></script> <!--Jquery UI-->
+    <script src="js/excanvas.js"></script> <!--canvas need for ie-->
+    <script src="rs-plugin/js/jquery.themepunch.plugins.min.js"></script> <!--rev slider-->
+    <script src="rs-plugin/js/jquery.themepunch.revolution.min.js"></script> <!--rev slider-->
+    <script type="text/javascript" src="showbizpro/js/jquery.themepunch.plugins.min.js"></script> <!--showbiz-->						
+	<script type="text/javascript" src="showbizpro/js/jquery.themepunch.showbizpro.min.js"></script> <!--showbiz-->
+    <script src="js/scroolto.js"></script> <!--Scrool To-->
+    <script src="js/jquery.nicescroll.min.js"></script> <!--Nice Scroll-->
+    <script src="js/jquery.easy-pie-chart.js"></script> <!--Chart-->
+    <script src="js/fancybox/jquery.fancybox.js"></script> <!--main fancybox-->
+    <script src="js/fancybox/jquery.fancybox-thumbs.js"></script> <!--fancybox thumbs-->
+    <script src="js/jquery.inview.min.js"></script> <!--inview-->
+	<script src="js/menu/hoverIntent.js"></script> <!--superfish-->
+	<script src="js/menu/superfish.min.js"></script> <!--superfish-->
+    <script src="js/menu/tinynav.min.js"></script> <!--tinynav-->
+	<script src="js/twitter/jquery.twitterfeed.min.js"></script> <!--twitter-->
+    <script src="js/settings.js"></script> <!--settings-->
+    <!--End js-->
+	
+	<script type='text/javascript'>
+		/* <![CDATA[ */
+		
+		
+		//start carousel
+		jQuery(document).ready(function() {
+
+			jQuery('.showbiz-container').showbizpro({
+				dragAndScroll:"on",
+				visibleElementsArray:[4,3,2,1]
+			});
+		   
+		});
+		//end carousel
+		
+		
+		//start revolution slider
+		var revapi;
+
+		jQuery(document).ready(function() {
+
+			   revapi = jQuery('.tp-banner-full-width').revolution(
+				{
+					delay:9000,
+					startwidth:1170,
+					startheight:650,
+					hideThumbs:10,
+					navigationType:"none",
+					fullWidth:"on",
+					forceFullWidth:"on"
+				});
+
+		});	//ready
+		//end revolution slider
+		
+		
+		//start chart
+		$(document).ready(function(){
+						
+			$('.percentagehome').easyPieChart({
+				size: 140,
+				rotate: 0,
+				lineWidth: 10,
+				animate: 1000,
+				barColor: '#55738F',
+				trackColor: 'transparent',
+				scaleColor: false,
+				lineCap: 'butt',
+			});
+
+		});
+		//end chart
+		
+		//start tour
+		$(document).ready(function(){
+
+			var qnthometour = $('.hometour').length;
+			
+			
+			setInterval(function(){
+				
+				i=0;
+				
+				while ( i < qnthometour ){
+
+					//title and img hometours height
+					var titleimghometourheight = $(".hometour-"+i+" .titleimghometour").height();
+					var datedayhometourheight = $(".hometour-"+i+" .datedayhometour").height();
+			
+					$(".hometour-"+i+" .descriptionhometour").css({
+					  "height": titleimghometourheight - datedayhometourheight
+					});	
+	
+					//tabshometourheight
+					var tabshometourheight = $(".hometour-"+i+" .tabshometour").height();
+					var footerhometourheight = $(".hometour-"+i+" .footerhometour").height();
+			
+					$(".hometour-"+i+" .listhometour").css({
+					  "height": tabshometourheight - footerhometourheight
+					});
+					
+					i++;	
+				}
+			
+			}, 0);
+			
+		});
+		//end tour
+		
+		
+		//start tab and tooltip
+		$(document).ready(function() {
+			$(".hometabs").tabs();
+			$( ".hometabs, .tooltip" ).tooltip({ position: { my: "top+0 top-75", at: "center center" } });
+		});
+		//end tab and tooltip
+		
+		
+		//start scroll
+		$(document).ready(function() {
+			//description hometour
+			$(".descriptionhometour").niceScroll({
+				touchbehavior:false,
+				cursorcolor:"#EBEEF2",
+				cursoropacitymax:0.9,
+				cursorwidth:3,
+				autohidemode:true,
+				cursorborder:"0px solid #2848BE",
+				cursorborderradius:"0px"
+				
+			});
+			
+			//list home tour
+			$(".listhometour, .listarchivedestination").niceScroll({
+				touchbehavior:true,
+				cursorcolor:"#EBEEF2",
+				cursoropacitymax:0.9,
+				cursorwidth:3,
+				autohidemode:true,
+				cursorborder:"0px solid #2848BE",
+				cursorborderradius:"0px"
+				
+			});
+		});
+		//end scroll
+		
+		
+		//start fancybox
+		$(document).ready(function(){
+						
+			$('.fancybox-thumbs').fancybox({
+				prevEffect : 'none',
+				nextEffect : 'none',
+
+				closeBtn  : true,
+				arrows    : true,
+				nextClick : true,
+
+				helpers : {
+					thumbs : {
+						width  : 50,
+						height : 50
+					}
+				}
+			});
+			
+		});
+		//end fancybox
+		
+		
+		/* ]]> */
+	</script>
+	
+	
+	</body>  
 </html>
